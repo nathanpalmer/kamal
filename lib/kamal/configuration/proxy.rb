@@ -29,7 +29,9 @@ class Kamal::Configuration::Proxy
   def deploy_options
     {
       host: hosts,
-      tls: proxy_config["ssl"].presence,
+      "tls": true,
+      "tls-certificate-path": "/home/kamal-proxy/.config/kamal-proxy/tls/cert.pem",
+      "tls-private-key-path": "/home/kamal-proxy/.config/kamal-proxy/tls/key.pem",
       "deploy-timeout": seconds_duration(config.deploy_timeout),
       "drain-timeout": seconds_duration(config.drain_timeout),
       "health-check-interval": seconds_duration(proxy_config.dig("healthcheck", "interval")),
